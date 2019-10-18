@@ -45,7 +45,7 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-    prompt("Spouse:" + " " + person[0].currentSpouse + "\nParents:" + " " + person[0].parents + "\nSiblings:" + " " + displayPeopleReturn(findSiblings(person[0], people)) );
+    prompt("Spouse:" + " " + person.currentSpouse.person[0].firstName + "\nParents:" + " " + person[0].parents + "\nSiblings:" + " " + displayPeopleReturn(findSiblings(person[0], people)) );
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -150,12 +150,15 @@ function searchByTrait(people){
 // }
 function findSiblings(person, people){
 var foundSiblings = people.filter( function(el){
-  if( person.parents[0] === el.parents[0]){
-    return true;
+  if( person.parents.length === 0){
+    return false;
   }
-    else{
-      return false;
+    else if( person.parents[0] === el.parents[0] && person.id !== el.id){
+      return true;
     }
+      else{
+      return false;
+      }
   });
   console.log(foundSiblings);
   return foundSiblings;
@@ -187,3 +190,12 @@ var foundSiblings = people.filter( function(el){
 
 
 // function foundGender()
+
+// function displayDecendants(person, people){
+//  var foundDecendants = people.filter( function(el){
+//  if(counter>0){
+//    return displayDecendants(counter-1);
+//  }
+// });
+// }
+// displayeDecendants
