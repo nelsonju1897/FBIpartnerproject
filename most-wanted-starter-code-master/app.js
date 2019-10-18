@@ -5,24 +5,22 @@ Build all of your functions for displaying and gathering information below (GUI)
 
 // app is the function called to start the entire application
 function app(people){
-  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+  let searchType = prompt("Do you know the name of the person you are looking for? Enter 'yes' or 'no'").toLowerCase();
   let searchResults;
   switch(searchType){
     case 'yes':
-      searchResults = searchByName(people);
-      break;
+    searchResults = searchByName(people);
+    mainMenu(searchResults, people);
+     break;
     case 'no':
       // TODO: search by traits
       break;
       default:
     app(people); // restart app
-      break;
   }
-  
-  // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults, people);
 }
-
+  // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
+ 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
@@ -38,7 +36,7 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     // TODO: get person's info
-    prompt("First Name:" + " " + person[0].firstName + "\nLast Name: " + person[0].lastName + "\nGender:" + " " + person[0].gender + "\nDOB:" + " " + person[0].dob + "\nHeight:" + " " + person[0].height + "\nWeight:" + " " + person[0].weight + "\nEye Color:" + " " + person[0].eyeColor + "\nOccupation");
+    prompt("First Name:" + " " + person[0].firstName + "\nLast Name: " + person[0].lastName + "\nGender:" + " " + person[0].gender + "\nDOB:" + " " + person[0].dob + "\nHeight:" + " " + person[0].height + "\nWeight:" + " " + person[0].weight + "\Eye Color:" + " " + person[0].eyeColor);
     break;
     case "family":
     // TODO: get person's family
@@ -57,8 +55,9 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  let firstName = promptFor("What is the person's first name?", chars);
-  let lastName = promptFor("What is the person's last name?", chars);
+
+  let firstName = prompt("What is the person's first name?",);
+  let lastName = prompt("What is the person's last name?",);
 
   let foundPerson = people.filter(function(person){
     if(person.firstName === firstName && person.lastName === lastName){
@@ -85,23 +84,26 @@ function displayPerson(person){
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
   // TODO: finish getting the rest of the information to display
+
   alert(personInfo);
+
 }
 
-// function that prompts and validates user input
-function promptFor(question, valid){
-  do{
-    let response = prompt(question).trim();
-  } while(!response || !valid(response));
-  return response;
-}
 
-// helper function to pass into promptFor to validate yes/no answers
-function yesNo(input){
-  return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
-}
+// // function that prompts and validates user input
+// function promptFor(question, valid){
+//   do{
+//     let response = prompt(question).trim();
+//   } while(!response || !valid(response));
+//   return response;
+// }
 
-// helper function to pass in as default promptFor validation
-function chars(input){
-  return true; // default validation only
-}
+// // helper function to pass into promptFor to validate yes/no answers
+// function yesNo(input){
+//   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
+// }
+
+// // helper function to pass in as default promptFor validation
+// function chars(input){
+//   return true; // default validation only
+// }
