@@ -5,11 +5,12 @@ Build all of your functions for displaying and gathering information below (GUI)
 
 // app is the function called to start the entire application
 function app(people){
-  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+  let searchType = prompt("Do you know the name of the person you are looking for? Enter 'yes' or 'no'").toLowerCase();
   let searchResults;
   switch(searchType){
     case 'yes':
       searchResults = searchByName(people);
+      mainMenu(searchResults, people);
       break;
     case 'no':
       // TODO: search by traits
@@ -18,13 +19,14 @@ function app(people){
     app(people); // restart app
       break;
   }
-  
+}  
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults, people);
-}
+//   mainMenu(searchResults, people);
+// }
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
+
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
@@ -38,10 +40,11 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     // TODO: get person's info
-    prompt("First Name:" + " " + person[0].firstName + "\nLast Name: " + person[0].lastName + "\nGender:" + " " + person[0].gender + "\nDOB:" + " " + person[0].dob + "\nHeight:" + " " + person[0].height + "\nWeight:" + " " + person[0].weight + "\nEye Color:" + " " + person[0].eyeColor + "\nOccupation");
+    prompt("First Name:" + " " + person[0].firstName + "\nLast Name: " + person[0].lastName + "\nGender:" + " " + person[0].gender + "\nDOB:" + " " + person[0].dob + "\nHeight:" + " " + person[0].height + "\nWeight:" + " " + person[0].weight + "\nEye Color:" + " " + person[0].eyeColor + "\nOccupation:" + " " + person[0].occupation + "\nParents:" + " " + person[0].parents + "\nCurrent Spouse:" + " " + person[0].currentSpouse);
     break;
     case "family":
     // TODO: get person's family
+    prompt("Spouse:" + " " + person[0].currentSpouse + "\nParents:" + " " + person[0].parents + "\nSiblings:" + " " + findParents(people) );
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -57,8 +60,8 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  let firstName = promptFor("What is the person's first name?", chars);
-  let lastName = promptFor("What is the person's last name?", chars);
+  let firstName = prompt("What is the person's first name?");
+  let lastName = prompt("What is the person's last name?");
 
   let foundPerson = people.filter(function(person){
     if(person.firstName === firstName && person.lastName === lastName){
@@ -101,7 +104,18 @@ function yesNo(input){
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
 }
 
-// helper function to pass in as default promptFor validation
-function chars(input){
-  return true; // default validation only
+// // helper function to pass in as default promptFor validation
+// function chars(input){
+//   return true; // default validation only
+// }
+function findParents(people){
+var foundParents = people.filter( function(person){
+  if( person.parents[0] === person.parents[0] || person.parents[1]){
+    return ;
+  }
+    else{
+      return false;
+    }
+  });
+  console.log(foundParents);
 }
