@@ -45,7 +45,7 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-    prompt("Spouse:" + " " + person[0].currentSpouse + "\nParents:" + " " + person[0].parents + "\nSiblings:" + " " + findParents(person[0], people) );
+    prompt("Spouse:" + " " + person[0].currentSpouse + "\nParents:" + " " + person[0].parents + "\nSiblings:" + " " + displayPeopleReturn(findSiblings(person[0], people)) );
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -83,6 +83,12 @@ function displayPeople(people){
   }).join("\n"));
 }
 
+function displayPeopleReturn(people){
+  return people.map(function(person){
+    return person.firstName + " " + person.lastName;
+  }).join("\n");
+}
+
 function displayPerson(person){
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
@@ -118,6 +124,7 @@ function searchByTrait(people){
     else{
       return false;
     }
+    
   })
   // TODO: find the person using the name they entered
   return foundTraits;
@@ -141,14 +148,42 @@ function searchByTrait(people){
 // function chars(input){
 //   return true; // default validation only
 // }
-function findParents(person, people){
-var foundParents = people.filter( function(el){
+function findSiblings(person, people){
+var foundSiblings = people.filter( function(el){
   if( person.parents[0] === el.parents[0]){
-    return ;
+    return true;
   }
     else{
       return false;
     }
   });
-  console.log(foundParents);
+  console.log(foundSiblings);
+  return foundSiblings;
 }
+
+
+// function findDescendants(person, people){
+//   var foundDescendants = people.filter(function(el{
+//     if(person.)
+  
+//   });
+// }
+
+
+// function foundHeight(person, people){
+//     prompt("What is the persons' height?");
+//     if(person[0].height === person[0].height);
+//     return mainMenu(people);
+// }
+
+
+// function foundWeight()
+
+
+// function foundOccupation()
+
+
+// function foundEyeColor()
+
+
+// function foundGender()
