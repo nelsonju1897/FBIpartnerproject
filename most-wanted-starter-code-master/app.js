@@ -9,23 +9,18 @@ function app(people){
   let searchResults;
   switch(searchType){
     case 'yes':
-      searchResults = searchByName(people);
-      
-      break;
+    searchResults = searchByName(people);
+    mainMenu(searchResults, people);
+     break;
     case 'no':
-      searchResults = searchByTrait(people);
       // TODO: search by traits
       break;
       default:
     app(people); // restart app
-      break;
   }
-  mainMenu(searchResults, people);
-  
-  // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  
 }
-
+  // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
+ 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
@@ -41,7 +36,7 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     // TODO: get person's info
-    prompt("First Name:" + " " + person[0].firstName + "\nLast Name: " + person[0].lastName + "\nGender:" + " " + person[0].gender + "\nDOB:" + " " + person[0].dob + "\nHeight:" + " " + person[0].height + "\nWeight:" + " " + person[0].weight + "\nEye Color:" + " " + person[0].eyeColor + "\nOccupation");
+    prompt("First Name:" + " " + person[0].firstName + "\nLast Name: " + person[0].lastName + "\nGender:" + " " + person[0].gender + "\nDOB:" + " " + person[0].dob + "\nHeight:" + " " + person[0].height + "\nWeight:" + " " + person[0].weight + "\Eye Color:" + " " + person[0].eyeColor);
     break;
     case "family":
     // TODO: get person's family
@@ -60,8 +55,9 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  let firstName = prompt("What is the person's first name?");
-  let lastName = prompt("What is the person's last name?");
+
+  let firstName = prompt("What is the person's first name?",);
+  let lastName = prompt("What is the person's last name?",);
 
   let foundPerson = people.filter(function(person){
     if(person.firstName === firstName && person.lastName === lastName){
@@ -88,50 +84,21 @@ function displayPerson(person){
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
   // TODO: finish getting the rest of the information to display
+
   alert(personInfo);
+
 }
 
-function searchByTrait(people){
-  let height = prompt("What is the person's height?");
-  let weight = prompt("What is the person's weight?");
-  let eyeColor = prompt("What is the persons' eye color?");
-  let occupation = prompt("What is the person's occupation?");
-  let gender = prompt("What is the person's gender?")
 
-  let foundTraits = people.filter(function(person){
-    if(person.height === height){
-      return true;
-    }
-    else if(person.weight === weight){
-      return true;
-    }
-    else if(person.eyeColor === eyeColor){
-      return true;
-    }
-    else if(person.occupation === occupation){
-      return true;
-    }
-    else if(person.gender === gender){
-      return true;
-    }
-    else{
-      return false;
-    }
-  })
-  // TODO: find the person using the name they entered
-  return foundTraits;
-}
-
-// function that prompts and validates user input
+// // function that prompts and validates user input
 // function promptFor(question, valid){
-//let response;   
-//do{
-//     response = prompt(question).trim();
+//   do{
+//     let response = prompt(question).trim();
 //   } while(!response || !valid(response));
 //   return response;
 // }
 
-// helper function to pass into promptFor to validate yes/no answers
+// // helper function to pass into promptFor to validate yes/no answers
 // function yesNo(input){
 //   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
 // }
