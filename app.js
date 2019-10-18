@@ -27,10 +27,6 @@ function app(people){
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
-
-
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
   if(!person){
     alert("Could not find that individual.");
     return app(people); // restart
@@ -61,18 +57,17 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  let firstName = prompt("What is the person's first name?");
-  let lastName = prompt("What is the person's last name?");
+  let firstName = prompt("What is the person's first name?").toLowerCase();
+  let lastName = prompt("What is the person's last name?").toLowerCase();
 
   let foundPerson = people.filter(function(person){
-    if(person.firstName === firstName && person.lastName === lastName){
+    if(person.firstName.toLowerCase() === firstName && person.lastName.toLowerCase() === lastName){
       return true;
     }
     else{
       return false;
     }
-  })
-  // TODO: find the person using the name they entered
+  });
   return foundPerson;
 }
 
@@ -92,8 +87,7 @@ function displayPeopleReturn(people){
 function displayPerson(person){
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
-  let personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
+  let personInfo = "First Name: " + person.firstName + "\n"; personInfo += "Last Name: " + person.lastName + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
@@ -183,7 +177,7 @@ function findSpouse(person, people){
 
 function findParents(person, people){
   var foundParents = people.filter( function(el){
-    if(person.parents[0].length === 0){
+    if(person.parents.length === 0){
       return false;
     }
   else if( person.parents[0] === el.id){
