@@ -13,6 +13,7 @@ function app(people){
       mainMenu(searchResults, people);
       break;
     case 'no':
+      searchResults = searchByTrait(people);
       // TODO: search by traits
       break;
       default:
@@ -44,7 +45,7 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-    prompt("Spouse:" + " " + person[0].currentSpouse + "\nParents:" + " " + person[0].parents + "\nSiblings:" + " " + findParents(people) );
+    prompt("Spouse:" + " " + person[0].currentSpouse + "\nParents:" + " " + person[0].parents + "\nSiblings:" + " " + findParents(person[0], people) );
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -91,26 +92,58 @@ function displayPerson(person){
   alert(personInfo);
 }
 
-// function that prompts and validates user input
-function promptFor(question, valid){
-  do{
-    let response = prompt(question).trim();
-  } while(!response || !valid(response));
-  return response;
+function searchByTrait(people){
+  let height = prompt("What is the person's height?");
+  let weight = prompt("What is the person's weight?");
+  let eyeColor = prompt("What is the persons' eye color?");
+  let occupation = prompt("What is the person's occupation?");
+  let gender = prompt("What is the person's gender?")
+
+  let foundTraits = people.filter(function(person){
+    if(person.height === height){
+      return true;
+    }
+    else if(person.weight === weight){
+      return true;
+    }
+    else if(person.eyeColor === eyeColor){
+      return true;
+    }
+    else if(person.occupation === occupation){
+      return true;
+    }
+    else if(person.gender === gender){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  // TODO: find the person using the name they entered
+  return foundTraits;
 }
 
+// function that prompts and validates user input
+// function promptFor(question, valid){
+//let response;   
+//do{
+//     response = prompt(question).trim();
+//   } while(!response || !valid(response));
+//   return response;
+// }
+
 // helper function to pass into promptFor to validate yes/no answers
-function yesNo(input){
-  return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
-}
+// function yesNo(input){
+//   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
+// }
 
 // // helper function to pass in as default promptFor validation
 // function chars(input){
 //   return true; // default validation only
 // }
-function findParents(people){
-var foundParents = people.filter( function(person){
-  if( person.parents[0] === person.parents[0] || person.parents[1]){
+function findParents(person, people){
+var foundParents = people.filter( function(el){
+  if( person.parents[0] === el.parents[0]){
     return ;
   }
     else{
