@@ -297,14 +297,9 @@ function findDescendants(person, people){
       return false;
     }
   });
-<<<<<<< HEAD
   for( let i = 0; i < foundDescendants.length; i++){
     foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
     
-=======
-  for(let i = 0; i < foundDescendants.length; i++){
-    foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
->>>>>>> ce26705a1fba3e08b8cad52e936863585f965a48
   }
   return foundDescendants
 }
