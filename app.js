@@ -78,7 +78,7 @@ function mainMenu(person, people){
   function searchByTrait(people){
     let filterResults = people
       while(filterResults.length > 1){
-      let displayOption = prompt(" 'height', 'weight', 'eye color', 'occupation', 'gender', 'restart', 'quit'");
+      let displayOption = prompt("Type what trait you would like to search by: 'height', 'weight', 'eye color', 'occupation', 'gender', 'restart', 'quit'");
       
       switch(displayOption){
       case 'height':
@@ -297,9 +297,8 @@ function findDescendants(person, people){
       return false;
     }
   });
-  let i = foundDescendants
-  for(i = 0; i < foundDescendants.length; i++){
-    findDescendants(foundDescendants[i])
+  for(let i = 0; i < foundDescendants.length; i++){
+    foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
   }
   return foundDescendants
 }
