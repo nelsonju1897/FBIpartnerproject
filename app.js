@@ -119,28 +119,50 @@ function searchByWeight(people){
   return foundWeight;  
   }
   
-  function searchByGender(people){
-    let gender = prompt("What is the person's gender");
-    var foundGender= people.filter(function(el){
-      if(gender.length === 0){
+  function searchByHeight(people){
+    let height = prompt("What is the person's height");
+    
+    let foundHeight = people.filter(function(person){
+      if(person.height === height){
+        return true;
+      }
+      else{
         return false;
       }
-    else if( gender == el.gender){
-      return true;
-    }
-    else {
-      return false;
+    });
+      return foundHeight;
+  }
+  
+    function searchByWeight(people){
+      let weight = prompt("What is the person's weight");
+      
+      let foundWeight = people.filter(function(person){
+        if(person.weight === weight){
+          return true;
+        }
+        else{
+          return false;
+        }
+      });
+        return foundWeight;
     }
   });
   console.log (foundGender);  
   return foundGender;  
   }
 
-  function searchByEyeColor(people){
-    let eyeColor = prompt("What is the person's eye color");
-    var foundEyeColor = people.filter(function(el){
-      if(eyeColor.length === 0){
-        return false;
+      function searchByGender(people){
+        let gender = prompt("What is the person's gender?");
+        
+        let foundGender = people.filter(function(person){
+          if(person.gender === gender){
+            return true;
+          }
+          else{
+            return false;
+          }
+        });
+          return foundGender
       }
     else if( eyeColor == el.eyeColor){
       return true;
@@ -153,6 +175,38 @@ function searchByWeight(people){
   return foundEyeColor;  
   }
 
+<<<<<<< HEAD
+        function searchByEyeColor(people){
+          let eyeColor = prompt("What is the person's eye color?");
+          
+          let foundEyeColor = people.filter(function(person){
+            if(person.eyeColor === eyecolor){
+              return true;
+            }
+            else{
+              return false;
+            }
+          });
+            return foundEyeColor;
+        }
+        
+
+          function searchByOccupation(people){
+            let occupation = prompt("What is the persons' occupation?");
+            
+            let foundOccupation = people.filter(function(person){
+              if(person.occupation === occupation){
+                return true;
+              }
+              else{
+                return false;
+              }
+            });
+          return foundOccupation;
+          }
+
+
+=======
   function searchByOccupation(people){
     let occupation = prompt("What is the person's occupation");
     var foundOccupation = people.filter(function(el){
