@@ -5,7 +5,7 @@ Build all of your functions for displaying and gathering information below (GUI)
 
 // app is the function called to start the entire application
 function app(people){
-  let searchType = prompt("Do you know the name of the person you are looking for? Enter 'yes' or 'no'").toLowerCase();
+  let searchType = prompt("Do you know the name of the person you are looking for? Enter 'yes' or 'no'").toLowerCase().trim();
   let searchResults;
   switch(searchType){
     case 'yes':
@@ -32,7 +32,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'").toLowerCase().trim();
 
   switch(displayOption){
     case "info":
@@ -57,8 +57,8 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  let firstName = prompt("What is the person's first name?").toLowerCase();
-  let lastName = prompt("What is the person's last name?").toLowerCase();
+  let firstName = prompt("What is the person's first name?").toLowerCase().trim();
+  let lastName = prompt("What is the person's last name?").toLowerCase().trim();
 
   let foundPerson = people.filter(function(person){
     if(person.firstName.toLowerCase() === firstName && person.lastName.toLowerCase() === lastName){
