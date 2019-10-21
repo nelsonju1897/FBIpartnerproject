@@ -31,37 +31,8 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }
-  function searchByTrait(people){
-    let filterResults = people
-    while(filterResults.length >1){
-    let displayOption = prompt("");
-    
-    switch(displayLayout){
-    case "height":
-    filterResults = searchByHeight(people);
-    case "weight":
-    filterResults = searchByWeight(people);
-    break;
-    case "eyeColor":
-    filterResults = searchByEyeColor(people);
-    break;
-    case "occupation":
-    filterResults = searchByOccupation(people);
-    break;
-    case "gender":
-    filterResults = searchByGender(people);
-    break;
-    case "restart":
-    return searchByTraits(people); // restart
-    break;
-    case "quit":
-    return; // stop execution
-    default:
-    return app(people); // ask again
-  }
-}
-return filterResults;
-  }
+  
+  
 let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
@@ -86,6 +57,37 @@ let displayOption = prompt("Found " + person[0].firstName + " " + person[0].last
   }
 }
 
+function searchByTrait(people){
+  let filterResults = people
+   while(filterResults.length >1){
+   let displayOption = prompt(" Search by: 'height', 'weight', 'eye color', 'occupation', 'gender' ");
+   
+   switch(displayOption){
+   case 'height':
+   filterResults = searchByHeight(people);
+   case 'weight':
+   filterResults = searchByWeight(people);
+   break;
+   case 'eyeColor':
+   filterResults = searchByEyeColor(people);
+   break;
+   case 'occupation':
+   filterResults = searchByOccupation(people);
+   break;
+   case 'gender':
+   filterResults = searchByGender(people);
+   break;
+   case 'restart':
+   return searchByTrait(people); // restart
+   break;
+   case 'quit':
+   return; // stop execution
+   default:
+   return app(people); // ask again
+ }
+}
+return filterResults;
+ }
 
 function searchByName(people){
   let firstName = prompt("What is the person's first name?").toLowerCase();
@@ -99,6 +101,7 @@ function searchByName(people){
       return false;
     }
   });
+  return foundPerson;
 }
 
   
@@ -288,3 +291,11 @@ function findParents(person, people){
 });
   return foundParents;
 }
+
+
+function findDecendants(counter){
+    if(counter>0){
+      return findDecendants(counter-1);
+    }
+  }
+  findDecendants(5);
