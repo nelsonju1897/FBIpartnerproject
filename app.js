@@ -34,6 +34,7 @@ function mainMenu(person, people){
 
   let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'").toLowerCase().trim();
 
+
   switch(displayOption){
     case "info":
     // TODO: get person's info
@@ -56,6 +57,39 @@ function mainMenu(person, people){
   }
 }
 
+  function searchByTrait(people){
+    let filterResults = people
+      while(filterResults.length >1){
+      let displayOption = prompt("");
+      
+      switch(displayLayout){
+      case "height":
+      filterResults = searchByHeight(people);
+      case "weight":
+      filterResults = searchByWeight(people);
+      break;
+      case "eyeColor":
+      filterResults = searchByEyeColor(people);
+      break;
+      case "occupation":
+      filterResults = searchByOccupation(people);
+      break;
+      case "gender":
+      filterResults = searchByGender(people);
+      break;
+      case "restart":
+      return searchByTraits(people); // restart
+      break;
+      case "quit":
+      return; // stop execution
+      default:
+      return app(people); // ask again
+    }
+  }
+  return filterResults;
+}
+
+
 function searchByName(people){
   let firstName = prompt("What is the person's first name?").toLowerCase().trim();
   let lastName = prompt("What is the person's last name?").toLowerCase().trim();
@@ -68,8 +102,77 @@ function searchByName(people){
       return false;
     }
   });
-  return foundPerson;
 }
+
+  
+  function searchByHeight(people){
+    let height = prompt("What is the person's height");
+    
+    let foundPerson = people.filter(function(person){
+      if(person.height === height){
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+  }
+  
+    function searchByWeight(people){
+      let weight = prompt("What is the person's weight");
+      
+      let foundPerson = people.filter(function(person){
+        if(person.weight === weight){
+          return true;
+        }
+        else{
+          return false;
+        }
+      });
+    }
+
+      function searchByGender(people){
+        let gender = prompt("What is the person's gender?");
+        
+        let foundPerson = people.filter(function(person){
+          if(person.gender === gender){
+            return true;
+          }
+          else{
+            return false;
+          }
+        });
+      }
+
+        function searchByEyeColor(people){
+          let eyeColor = prompt("What is the person's eye color?");
+          
+          let foundPerson = people.filter(function(person){
+            if(person.eyeColor === eyecolor){
+              return true;
+            }
+            else{
+              return false;
+            }
+          });
+        }
+        
+
+          function searchByOccupation(people){
+            let foccupation = prompt("What is the persons' occupation?");
+            
+            let foundPerson = people.filter(function(person){
+              if(person.occupation === occupation){
+                return true;
+              }
+              else{
+                return false;
+              }
+            });
+          }
+//     // TODO: find the person using the name they entered
+//   return foundPerson;{}
+// }
 
 // alerts a list of people
 function displayPeople(people){
@@ -92,37 +195,33 @@ function displayPerson(person){
   alert(personInfo);
 }
 
-function searchByTrait(people){
-  let height = prompt("What is the person's height?");
-  let weight = prompt("What is the person's weight?");
-  let eyeColor = prompt("What is the persons' eye color?");
-  let occupation = prompt("What is the person's occupation?");
-  let gender = prompt("What is the person's gender?")
+// function searchByTrait(people){
+  
 
-  let foundTraits = people.filter(function(person){
-    if(person.height === height){
-      return true;
-    }
-    else if(person.weight === weight){
-      return true;
-    }
-    else if(person.eyeColor === eyeColor){
-      return true;
-    }
-    else if(person.occupation === occupation){
-      return true;
-    }
-    else if(person.gender === gender){
-      return true;
-    }
-    else{
-      return false;
-    }
+//   let foundTraits = people.filter(function(person){
+//     if(person.height === height){
+//       return true;
+//     }
+//     else if(person.weight === weight){
+//       return true;
+//     }
+//     else if(person.eyeColor === eyeColor){
+//       return true;
+//     }
+//     else if(person.occupation === occupation){
+//       return true;
+//     }
+//     else if(person.gender === gender){
+//       return true;
+//     }
+//     else{
+//       return false;
+//     }
     
-  })
+//   })
   // TODO: find the person using the name they entered
-  return foundTraits;
-}
+  // return foundTraits;
+// }
 
 // function that prompts and validates user input
 // function promptFor(question, valid){
@@ -192,38 +291,3 @@ function findParents(person, people){
 });
   return foundParents;
 }
-
-// function findDescendants(person, people){
-//   var foundDescendants = people.filter(function(el{
-//     if(person.)
-  
-//   });
-// }
-
-
-// function foundHeight(person, people){
-//     prompt("What is the persons' height?");
-//     if(person[0].height === person[0].height);
-//     return mainMenu(people);
-// }
-
-
-// function foundWeight()
-
-
-// function foundOccupation()
-
-
-// function foundEyeColor()
-
-
-// function foundGender()
-
-// function displayDecendants(person, people){
-//  var foundDecendants = people.filter( function(el){
-//  if(counter>0){
-//    return displayDecendants(counter-1);
-//  }
-// });
-// }
-// displayeDecendants
