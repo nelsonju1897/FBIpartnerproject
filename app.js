@@ -88,8 +88,7 @@ let displayOption = prompt("Found " + person[0].firstName + " " + person[0].last
   }
   return filterResults;
 }
-return filterResults;
- }
+
 
 function searchByName(people){
   let firstName = prompt("What is the person's first name?").toLowerCase();
@@ -110,7 +109,7 @@ function searchByName(people){
   function searchByHeight(people){
     let height = prompt("What is the person's height");
     
-    let foundPerson = people.filter(function(person){
+    let foundHeight = people.filter(function(person){
       if(person.height === height){
         return true;
       }
@@ -118,12 +117,13 @@ function searchByName(people){
         return false;
       }
     });
+      return foundHeight;
   }
   
     function searchByWeight(people){
       let weight = prompt("What is the person's weight");
       
-      let foundPerson = people.filter(function(person){
+      let foundWeight = people.filter(function(person){
         if(person.weight === weight){
           return true;
         }
@@ -131,12 +131,13 @@ function searchByName(people){
           return false;
         }
       });
+        return foundWeight;
     }
 
       function searchByGender(people){
         let gender = prompt("What is the person's gender?");
         
-        let foundPerson = people.filter(function(person){
+        let foundGender = people.filter(function(person){
           if(person.gender === gender){
             return true;
           }
@@ -144,12 +145,13 @@ function searchByName(people){
             return false;
           }
         });
+          return foundGender
       }
 
         function searchByEyeColor(people){
           let eyeColor = prompt("What is the person's eye color?");
           
-          let foundPerson = people.filter(function(person){
+          let foundEyeColor = people.filter(function(person){
             if(person.eyeColor === eyecolor){
               return true;
             }
@@ -157,13 +159,14 @@ function searchByName(people){
               return false;
             }
           });
+            return foundEyeColor;
         }
         
 
           function searchByOccupation(people){
             let occupation = prompt("What is the persons' occupation?");
             
-            let foundPerson = people.filter(function(person){
+            let foundOccupation = people.filter(function(person){
               if(person.occupation === occupation){
                 return true;
               }
@@ -171,7 +174,7 @@ function searchByName(people){
                 return false;
               }
             });
-          return foundPerson;
+          return foundOccupation;
           }
 
 
@@ -278,14 +281,9 @@ function findDescendants(person, people){
       return false;
     }
   });
-<<<<<<< HEAD
   for( let i = 0; i < foundDescendants.length; i++){
     foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
     
-=======
-  for(let i = 0; i < foundDescendants.length; i++){
-    foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
->>>>>>> ce26705a1fba3e08b8cad52e936863585f965a48
   }
   return foundDescendants
 }
