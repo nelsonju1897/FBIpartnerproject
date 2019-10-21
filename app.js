@@ -31,7 +31,7 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }
-  function searchByTraits(){
+  function searchByTrait(people){
     let filterResults = people
     while(filterResults.length >1){
     let displayOption = prompt("");
@@ -52,14 +52,15 @@ function mainMenu(person, people){
     filterResults = searchByGender(people);
     break;
     case "restart":
-    app(people); // restart
+    return searchByTraits(people); // restart
     break;
     case "quit":
     return; // stop execution
     default:
-    return mainMenu(person, people); // ask again
+    return app(people); // ask again
   }
 }
+return filterResults;
   }
 let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
@@ -98,10 +99,6 @@ function searchByName(people){
       return false;
     }
   });
-<<<<<<< HEAD
-=======
-  return foundPerson;
->>>>>>> 8d780fbd924b1698045a494bfc57c52684e67eb6
 }
 
   
