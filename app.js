@@ -63,6 +63,7 @@ function mainMenu(person, people){
     break;
     case "descendants":
     // TODO: get person's descendants
+    alert("Descendants:" + " " + displayPeopleReturn(findDescendants(person[0], people)));
     break;
     case "restart":
     app(people); // restart
@@ -282,4 +283,23 @@ function findParents(person, people){
   }
 });
   return foundParents;
+}
+
+function findDescendants(person, people){
+  let foundDescendants = people.filter(function(el){
+    if(person.id === el.parents[0]){
+      return true;
+    }
+    else if(person.id === el.parents[1]){
+      return true;
+    }
+    else {
+      return false;
+    }
+  });
+  let i = foundDescendants
+  for(i = 0; i < foundDescendants.length; i++){
+    findDescendants(foundDescendants[i])
+  }
+  return foundDescendants
 }
