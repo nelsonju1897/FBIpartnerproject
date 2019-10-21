@@ -266,7 +266,7 @@ function findParents(person, people){
 }
 
 function findDescendants(person, people){
-  let foundDescendants = people.filter(function(el){
+  let foundDescendants = people.filter( function(el){
     if(person.id === el.parents[0]){
       return true;
     }
@@ -277,9 +277,9 @@ function findDescendants(person, people){
       return false;
     }
   });
-  let i = foundDescendants
-  for(i = 0; i < foundDescendants.length; i++){
-    findDescendants(foundDescendants[i])
+  for( let i = 0; i < foundDescendants.length; i++){
+    foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
+    
   }
   return foundDescendants
 }
