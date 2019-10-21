@@ -58,34 +58,35 @@ let displayOption = prompt("Found " + person[0].firstName + " " + person[0].last
   }
 }
 
-function searchByTrait(people){
-  let filterResults = people
-   while(filterResults.length >1){
-   let displayOption = prompt(" Search by: 'height', 'weight', 'eye color', 'occupation', 'gender' ");
-   
-   switch(displayOption){
-   case 'height':
-   filterResults = searchByHeight(filterResults);
-   case 'weight':
-   filterResults = searchByWeight(filterResults);
-   break;
-   case 'eyeColor':
-   filterResults = searchByEyeColor(filterResults);
-   break;
-   case 'occupation':
-   filterResults = searchByOccupation(filterResults);
-   break;
-   case 'gender':
-   filterResults = searchByGender(filterResults);
-   break;
-   case 'restart':
-   return searchByTrait(filterResults); // restart
-   break;
-   case 'quit':
-   return; // stop execution
-   default:
-   return app(people); // ask again
- }
+  function searchByTrait(people){
+    let filterResults = people
+      while(filterResults.length > 1){
+      let displayOption = prompt("Type what trait you would like to search by: 'height', 'weight', 'eye color', 'occupation', 'gender', 'restart', 'quit'");
+      
+      switch(displayOption){
+      case 'height':
+      filterResults = searchByHeight(filterResults);
+      break;
+      case 'weight':
+      filterResults = searchByWeight(filterResults);
+      break;
+      case 'eye color':
+      filterResults = searchByEyeColor(filterResults);
+      break;
+      case 'occupation':
+      filterResults = searchByOccupation(filterResults);
+      break;
+      case 'gender':
+      filterResults = searchByGender(filterResults);
+      break;
+      case 'restart':
+      return searchByTrait(people); // restart
+      case 'quit': // stop execution
+      default:
+      return app(people); // ask again
+    }
+  }
+  return filterResults;
 }
 return filterResults;
  }
@@ -277,9 +278,14 @@ function findDescendants(person, people){
       return false;
     }
   });
+<<<<<<< HEAD
   for( let i = 0; i < foundDescendants.length; i++){
     foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
     
+=======
+  for(let i = 0; i < foundDescendants.length; i++){
+    foundDescendants = foundDescendants.concat(findDescendants(foundDescendants[i], people));
+>>>>>>> ce26705a1fba3e08b8cad52e936863585f965a48
   }
   return foundDescendants
 }
