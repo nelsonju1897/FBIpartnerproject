@@ -1,5 +1,9 @@
 "use strict"
+<<<<<<< HEAD
 // app is the function called to start the entire application
+=======
+
+>>>>>>> fdef1a077ec03d6e417f435c3105b471087f93c1
 function app(people){
   let searchType = prompt("Do you know the name of the person you are looking for? Enter 'yes' or 'no'").toLowerCase().trim();
   let searchResults;
@@ -13,13 +17,17 @@ function app(people){
       mainMenu(searchResults, people);
       break;
       default:
-    app(people); // restart app
+    app(people);
       break;
   }
+<<<<<<< HEAD
 }  
  
 
 // Menu function to call once you find who you are looking for
+=======
+}
+>>>>>>> fdef1a077ec03d6e417f435c3105b471087f93c1
 
 function searchByName(people){
   let firstName = prompt("What is the person's first name?").toLowerCase().trim();
@@ -35,14 +43,9 @@ function searchByName(people){
   return foundPerson;
 }
 
-
 function mainMenu(person, people){
-  if(!person){
-    alert("Could not find that individual.");
-    return app(people); // restart
-  }
+  
   let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'").toLowerCase().trim();
-
 
   switch(displayOption){
     case "info":
@@ -55,12 +58,10 @@ function mainMenu(person, people){
     alert("Descendants:" + " " + displayPeopleReturn(findDescendants(person[0], people)));
     break;
     case "restart":
-    app(people); // restart
+    app(people);
     break;
     case "quit":
-    return; // stop execution
-    default:
-    return mainMenu(person, people); // ask again
+    default: 
   }
 }
 
@@ -86,10 +87,10 @@ function mainMenu(person, people){
       filterResults = searchByGender(filterResults);
       break;
       case 'restart':
-      return searchByTrait(people); // restart
-      case 'quit': // stop execution
+      return searchByTrait(people);
+      case 'quit':
       default:
-      return app(people); // ask again
+      return app(people);
     }
   }
   return filterResults;
@@ -129,6 +130,7 @@ function searchByWeight(people){
   return foundWeight;  
   }
   
+<<<<<<< HEAD
   function searchByGender(people){
     let gender = prompt("What is the person's gender");
     var foundGender= people.filter(function(el){
@@ -140,17 +142,60 @@ function searchByWeight(people){
     }
     else {
       return false;
+=======
+  function searchByHeight(people){
+    let height = prompt("What is the person's height");
+    
+    let foundHeight = people.filter(function(person){
+      if(person.height === height){
+        return true;
+      }
+      else{
+        return false;
+      }
+    });
+      return foundHeight;
+  }
+  
+    function searchByWeight(people){
+      let weight = prompt("What is the person's weight");
+      
+      let foundWeight = people.filter(function(person){
+        if(person.weight === weight){
+          return true;
+        }
+        else{
+          return false;
+        }
+      });
+        return foundWeight;
+>>>>>>> fdef1a077ec03d6e417f435c3105b471087f93c1
     }
   });
   console.log (foundGender);  
   return foundGender;  
   }
 
+<<<<<<< HEAD
   function searchByEyeColor(people){
     let eyeColor = prompt("What is the person's eye color");
     var foundEyeColor = people.filter(function(el){
       if(eyeColor.length === 0){
         return false;
+=======
+      function searchByGender(people){
+        let gender = prompt("What is the person's gender?");
+        
+        let foundGender = people.filter(function(person){
+          if(person.gender === gender){
+            return true;
+          }
+          else{
+            return false;
+          }
+        });
+          return foundGender
+>>>>>>> fdef1a077ec03d6e417f435c3105b471087f93c1
       }
     else if( eyeColor == el.eyeColor){
       return true;
@@ -179,6 +224,7 @@ function searchByWeight(people){
   console.log (foundOccupation);  
   return foundOccupation;  
   }
+<<<<<<< HEAD
 
 
 // alerts a list of people
@@ -187,6 +233,8 @@ function displayPeople(people){
     return person.firstName + " " + person.lastName;
   }).join("\n"));
 }
+=======
+>>>>>>> fdef1a077ec03d6e417f435c3105b471087f93c1
 
 function displayPeopleReturn(people){
   return people.map(function(person){
@@ -194,6 +242,7 @@ function displayPeopleReturn(people){
   }).join(", ");
 }
 
+<<<<<<< HEAD
 function displayPerson(person){
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
@@ -202,6 +251,8 @@ function displayPerson(person){
   alert(personInfo);
 }
 
+=======
+>>>>>>> fdef1a077ec03d6e417f435c3105b471087f93c1
 function findSiblings(person, people){
 var foundSiblings = people.filter( function(el){
   if( person.parents.length === 0){
@@ -218,7 +269,6 @@ var foundSiblings = people.filter( function(el){
   return foundSiblings;
 }
 
-
 function findSpouse(person, people){
   var foundSpouse = people.filter( function(el){
     if(person.currentSpouse.length === 0){
@@ -233,7 +283,6 @@ function findSpouse(person, people){
 });
   return foundSpouse;
 }
-
 
 function findParents(person, people){
   var foundParents = people.filter( function(el){
