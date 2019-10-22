@@ -1,8 +1,4 @@
 "use strict"
-/*
-Build all of your functions for displaying and gathering information below (GUI).
-*/
-
 // app is the function called to start the entire application
 function app(people){
   let searchType = prompt("Do you know the name of the person you are looking for? Enter 'yes' or 'no'").toLowerCase().trim();
@@ -15,28 +11,24 @@ function app(people){
     case 'no':
       searchResults = searchByTrait(people);
       mainMenu(searchResults, people);
-      // TODO: search by traits
       break;
       default:
     app(people); // restart app
       break;
   }
 }  
-  // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-//   mainMenu(searchResults, people);
-// }
+ 
 
 // Menu function to call once you find who you are looking for
 
 function searchByName(people){
   let firstName = prompt("What is the person's first name?").toLowerCase().trim();
   let lastName = prompt("What is the person's last name?").toLowerCase().trim();
-
   let foundPerson = people.filter(function(person){
     if(person.firstName.toLowerCase() === firstName && person.lastName.toLowerCase() === lastName){
       return true;
     }
-    else{
+  else{
       return false;
     }
   });
@@ -54,15 +46,12 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
     alert("First Name:" + " " + person[0].firstName + "\nLast Name: " + person[0].lastName + "\nGender:" + " " + person[0].gender + "\nDOB:" + " " + person[0].dob + "\nHeight:" + " " + person[0].height + "\nWeight:" + " " + person[0].weight + "\nEye Color:" + " " + person[0].eyeColor + "\nOccupation:" + " " + person[0].occupation + "\nParents:" + " " + displayPeopleReturn(findParents(person[0], people)) + "\nCurrent Spouse:" + " " + displayPeopleReturn(findSpouse(person[0], people)) );
     break;
     case "family":
-    // TODO: get person's family
     alert("Spouse:" + " " + displayPeopleReturn(findSpouse(person[0], people)) + "\nParents:" + " " + displayPeopleReturn(findParents(person[0], people)) + "\nSiblings:" + " " + displayPeopleReturn(findSiblings(person[0], people)) );
     break;
     case "descendants":
-    // TODO: get person's descendants
     alert("Descendants:" + " " + displayPeopleReturn(findDescendants(person[0], people)));
     break;
     case "restart":
@@ -105,10 +94,6 @@ function mainMenu(person, people){
   }
   return filterResults;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> ca2f879f076b7b11b15fe6cd78a65d66320cc67e
 
 function searchByHeight(people){
   let height = prompt("What is the person's height");
@@ -144,34 +129,6 @@ function searchByWeight(people){
   return foundWeight;  
   }
   
-<<<<<<< HEAD
-  function searchByHeight(people){
-    let height = prompt("What is the person's height");
-    
-    let foundHeight = people.filter(function(person){
-      if(person.height === height){
-        return true;
-      }
-      else{
-        return false;
-      }
-    });
-      return foundHeight;
-  }
-  
-    function searchByWeight(people){
-      let weight = prompt("What is the person's weight");
-      
-      let foundWeight = people.filter(function(person){
-        if(person.weight === weight){
-          return true;
-        }
-        else{
-          return false;
-        }
-      });
-        return foundWeight;
-=======
   function searchByGender(people){
     let gender = prompt("What is the person's gender");
     var foundGender= people.filter(function(el){
@@ -183,33 +140,17 @@ function searchByWeight(people){
     }
     else {
       return false;
->>>>>>> ca2f879f076b7b11b15fe6cd78a65d66320cc67e
     }
   });
   console.log (foundGender);  
   return foundGender;  
   }
 
-<<<<<<< HEAD
-      function searchByGender(people){
-        let gender = prompt("What is the person's gender?");
-        
-        let foundGender = people.filter(function(person){
-          if(person.gender === gender){
-            return true;
-          }
-          else{
-            return false;
-          }
-        });
-          return foundGender
-=======
   function searchByEyeColor(people){
     let eyeColor = prompt("What is the person's eye color");
     var foundEyeColor = people.filter(function(el){
       if(eyeColor.length === 0){
         return false;
->>>>>>> ca2f879f076b7b11b15fe6cd78a65d66320cc67e
       }
     else if( eyeColor == el.eyeColor){
       return true;
@@ -222,38 +163,6 @@ function searchByWeight(people){
   return foundEyeColor;  
   }
 
-<<<<<<< HEAD
-        function searchByEyeColor(people){
-          let eyeColor = prompt("What is the person's eye color?");
-          
-          let foundEyeColor = people.filter(function(person){
-            if(person.eyeColor === eyecolor){
-              return true;
-            }
-            else{
-              return false;
-            }
-          });
-            return foundEyeColor;
-        }
-        
-
-          function searchByOccupation(people){
-            let occupation = prompt("What is the persons' occupation?");
-            
-            let foundOccupation = people.filter(function(person){
-              if(person.occupation === occupation){
-                return true;
-              }
-              else{
-                return false;
-              }
-            });
-          return foundOccupation;
-          }
-
-
-=======
   function searchByOccupation(people){
     let occupation = prompt("What is the person's occupation");
     var foundOccupation = people.filter(function(el){
@@ -270,10 +179,7 @@ function searchByWeight(people){
   console.log (foundOccupation);  
   return foundOccupation;  
   }
-//     // TODO: find the person using the name they entered
-//   return foundPerson;{}
-// }
->>>>>>> ca2f879f076b7b11b15fe6cd78a65d66320cc67e
+
 
 // alerts a list of people
 function displayPeople(people){
@@ -296,25 +202,6 @@ function displayPerson(person){
   alert(personInfo);
 }
 
-
-// function that prompts and validates user input
-// function promptFor(question, valid){
-//let response;   
-//do{
-//     response = prompt(question).trim();
-//   } while(!response || !valid(response));
-//   return response;
-// }
-
-// helper function to pass into promptFor to validate yes/no answers
-// function yesNo(input){
-//   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
-// }
-
-// // helper function to pass in as default promptFor validation
-// function chars(input){
-//   return true; // default validation only
-// }
 function findSiblings(person, people){
 var foundSiblings = people.filter( function(el){
   if( person.parents.length === 0){
